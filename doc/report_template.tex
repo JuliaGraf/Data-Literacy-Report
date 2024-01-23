@@ -136,11 +136,11 @@ Put your abstract here. Abstracts typically start with a sentence motivating why
 Motivate the problem, situation or topic you decided to work on. Describe why it matters (is it of societal, economic, scientific value?). Outline the rest of the paper (use references, e.g.~to \Cref{sec:methods}: What kind of data you are working with, how you analyse it, and what kind of conclusion you reached. The point of the introduction is to make the reader want to read the rest of the paper.
 
 \section{Data and Methods}\label{sec:methods}
-
 The annual Oktoberfest data from 1985 to 2022 was retrieved from the Open Data Portal of the Statistical Office Munich. This dataset contains the yearly festival duration, visitor numbers, as well as consumption and prices for beer and roast chicken. Additional data for 2023 was retrieved from the State Capital Munich Portal. \\
 We examine the evolution of visitor numbers over the years and use four additional datasets to investigate how these are influenced by precipitation. Weather datasets were retrieved from the Open Data Server of the German Meteorological Service (DWD) and contain data from the weather stations ``München-Stadt" and ``München (Bavariaring)". Two of the datasets contain the daily precipitation in millimeters, with one spanning from 1954 to 2022, and the other from 2022 to 2024. The remaining two datasets contain the hourly precipitation in millimeters, in ranges from 1997 to 2022, and from 2022 to 2024. We use the Pearson correlation coefficient (PCC) to investigate the correlation between the average number of daily visitors and the average daily precipitation during each Oktoberfest, and also constrain daily precipitation between 10am and 10pm. The PCC ranges from -1 to 1, where a higher absolute value indicates a stronger correlation between two variables.\\
+\textcolor{red}{missing: heat map data}\\
 We investigate visitor, price and consumption trends over the years, and use the PCC to explore the correlation between beer price and per capita beer consumption.To account for inflation over time, beer prices are also adjusted by the Consumer Price Index (CPI) which measures the monthly average price development of goods and services purchased by German households. The CPI data was collected from the Federal Statistical Office of Germany (Destatis).\\
-\textcolor{red}{missing: heat map data}
+\textcolor{red}{missing: price prediction}\\
 
 % This is the template for a figure from the original ICML submission pack. In lecture 10 we will discuss plotting in detail.
 % Refer to this lecture on how to include figures in this text.
@@ -160,21 +160,33 @@ We investigate visitor, price and consumption trends over the years, and use the
 % \end{figure}
 
 \section{Results}\label{sec:results}
-\subsection*{3.1 Influence of precipitation on visitor numbers}
-The PCC we computed for the mean daily visitors and the mean daily precipitation in each year is around -0.1913. The correlation is negative. As the amount of precipitation increases the amount of visitors decrease. Since the absolute value of the PCC is quite low but not zero the correlation between the variables is weak. Due to the fact that the precipitaion here includes hours of the day were the octoberfest isn't open we also investigated if the mean precipitation at day time correlates with the amount of visitors stronger. We therefor considered the precipitation between 10am and 10pm. The PCC than is around -0.2276. So it gets stronger but is still weak.
+\subsection*{3.1 Visitor trend over the years}
+The visitor numbers fluctuate over the years, and we observe a dramatic drop in visitor numbers in the year 2001. The Oktoberfest was cancelled in 2020 and 2021 due to the pandemic. A new record number of visitors was set in 2023.\\
+\textcolor{red}{add figure: visitor trends.}\\
+\subsection*{3.2 Influence of precipitation on visitor numbers}
+The PCC we computed for the mean daily visitors and the mean daily precipitation in each year is around -0.1913. The correlation is negative. As the amount of precipitation increases the amount of visitors decrease. Since the absolute value of the PCC is quite low but not zero the correlation between the variables is weak. Due to the fact that the precipitaion here includes hours of the day were the Oktoberfest isn't open we also investigated if the mean precipitation at day time correlates with the amount of visitors stronger. We therefor considered the precipitation between 10am and 10pm. The PCC than is around -0.2276. So it gets stronger but is still weak.
 \begin{figure*}% this figure made with
   % plt.rcParams.update(bundles.icml2022(column=”half”, nrows=1, ncols=2, usetex=False)))
   % fig,ax = plt.subplots(nrows=1, ncols=1)
   \includegraphics{fig/totalprecipitation.pdf}
-  \caption{The mean daily visitors of the octoberfest as a function of the mean daily precipitation between 10am and 10pm at the time of the octoberfest in each year. The lines are the linear regression lines of the data points.}
+  \caption{The mean daily visitors of the Oktoberfest as a function of the mean daily precipitation between 10am and 10pm at the time of the Oktoberfest in each year. The lines are the linear regression lines of the data points.}
   \label{figure_precipitation}
 \end{figure*}\\
 \noindent
-In Figure~\ref{figure_precipitation} we can see the weak negative correlation in the green regression line which has a negative gradient while the values at both axis increas. The regression line shows that the mean daily amount of visitors of the octoberfest decrease by around 25.000 people as the mean precipitation at day time increases from zero milimeters to seven.\\
-
+In Figure~\ref{figure_precipitation} we can see the weak negative correlation in the green regression line which has a negative gradient while the values at both axis increas. The regression line shows that the mean daily amount of visitors of the Oktoberfest decrease by around 25.000 people as the mean precipitation at day time increases from zero milimeters to seven.\\
+\subsection*{3.3 Tourists to Upper Bavaria during Oktoberfest}
+\subsection*{3.4 Price and consumption trends}
+We see an almost linear increase in beer price over the years. The per capita consumption also shows an overall increase, but fluctuates over the years. We observe a low per capita beer consumption in 2023, likely due to to the record number of visitors that year. The correlation plot shows that beer consumption continues to increase, despite rising beer prices. This strong positive relationship between beer price and consumption is confimred by the PCC of .... \\
+Adjusting beer prices by the CPI slightly increases the correlation between price and consumption from ... (excluding 2023 outlier) to ....\\
+For roast chicken, the PCC coeffiecient of ... shows a strong negative correlation between price and consumption.
+\subsection*{3.5 Beer price prediction}
 
 \section{Discussion \& Conclusion}\label{sec:conclusion}
-The PCC is weak for the mean precipitation at day time and the mean daily vistors. This can have many reasons. One reason is, that we looked at the correlation of the mean over all days for each octoberfest and not at the correlation between the precipitation at each day and the visitor number of each day due to the lack of data. If in one year there is a very rainy day at which fewer people visit followed by good days with no rain were all the vistors come instead we couldn't see that the people that visited were influenced by the precipitation when only using the mean. Due to that even a weak correaltion shows that the amount of precipitation influences the amount of vistors. ........ In conclusion we can say, that the amount of precipitation influences the amount of visitors, but there are factors that influence the amount of precipitatioin more.\\
+The sudden drop in visitors in 2001 could potentially be explained by the 9/11 terrorist attacks that occurred a few weeks prior to the festival. Perhaps surprisingly, visitor numbers were still very low during the first festival after the pandemic in 2022. This could be due to the public's remaining fears of contracting the virus in large crowds.\\
+
+The PCC is weak for the mean precipitation at day time and the mean daily vistors. This can have many reasons. One reason is, that we looked at the correlation of the mean over all days for each Oktoberfest and not at the correlation between the precipitation at each day and the visitor number of each day due to the lack of data. If in one year there is a very rainy day at which fewer people visit followed by good days with no rain were all the vistors come instead we couldn't see that the people that visited were influenced by the precipitation when only using the mean. Due to that even a weak correaltion shows that the amount of precipitation influences the amount of vistors. ........ In conclusion we can say, that the amount of precipitation influences the amount of visitors, but there are factors that influence the amount of precipitatioin more.\\
+
+The rising beer prices do not have a negative effect on the beer consumption, as we observe a positive correlation between beer price and consumption per capita. The Oktoberfest has grown in popularity since 1985 and now also attracts many international tourists. This might explain why people are willing to spend more on a "Maß" beer, especially for some international tourists who might be used to paying the same prices in their home country. The 2023 Oktoberfest was the first to introduce free water fountains, which could have led to the decrease in overall beer consumption we see that year. Interestingly, the positive correlation in beer consumption and price is opposite to what we observed with the chicken data. However, the reason for the decrease in chicken consumption might have less to do with the increase in price, but rather with the rise in popularity of other foods.
 
 \section*{Contribution Statement}
 
