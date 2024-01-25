@@ -8,6 +8,7 @@
 \usepackage{subfigure}
 \usepackage{booktabs} % for professional tables
 
+
 \usepackage{tikz}
 % Corporate Design of the University of Tübingen
 % Primary Colors
@@ -47,7 +48,7 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{amsthm}
-
+ 
 % if you use cleveref..
 \usepackage[capitalize,noabbrev]{cleveref}
 
@@ -137,7 +138,7 @@ Motivate the problem, situation or topic you decided to work on. Describe why it
 
 \section{Data and Methods}\label{sec:methods}
 The annual Oktoberfest data from 1985 to 2022 was retrieved from the Open Data Portal of the Statistical Office Munich. This dataset contains the yearly festival duration, visitor numbers, as well as consumption and prices for beer and roast chicken. Additional data for 2023 was retrieved from the State Capital Munich Portal. \\
-We examine the evolution of visitor numbers over the years and use four additional datasets to investigate how these are influenced by precipitation. Weather datasets were retrieved from the Open Data Server of the German Meteorological Service (DWD) and contain data from the weather stations ``München-Stadt" and ``München (Bavariaring)". Two of the datasets contain the daily precipitation in millimeters, with one spanning from 1954 to 2022, and the other from 2022 to 2024. The remaining two datasets contain the hourly precipitation in millimeters, in ranges from 1997 to 2022, and from 2022 to 2024. We use the Pearson correlation coefficient (PCC) to investigate the correlation between the average number of daily visitors and the average daily precipitation during each Oktoberfest, and also constrain daily precipitation between 10am and 10pm. The PCC ranges from -1 to 1, where a higher absolute value indicates a stronger correlation between two variables.\\
+We examine the evolution of visitor numbers over the years and use four additional datasets to investigate how these are influenced by precipitation. Weather datasets were retrieved from the Open Data Server of the German Meteorological Service (DWD) and contain data from the weather stations ``München-Stadt" and ``München (Bavariaring)". Two of the datasets contain the daily precipitation in millimeters, with one spanning from 1954 to 2022, and the other from 2022 to 2024~\citep{3}~\citep{4}. The remaining two datasets contain the hourly precipitation in millimeters, in ranges from 1997 to 2022, and from 2022 to 2024~\citep{1}~\citep{2}. We use the Pearson correlation coefficient (PCC) to investigate the correlation between the average number of daily visitors and the average daily precipitation during each Oktoberfest, and also constrain daily precipitation between 10am and 10pm. The PCC ranges from -1 to 1, where a higher absolute value indicates a stronger correlation between two variables~\cite{thonield}.\\
 \textcolor{red}{missing: heat map data}\\
 We investigate visitor, price and consumption trends over the years, and use the PCC to explore the correlation between beer price and per capita beer consumption.To account for inflation over time, beer prices are also adjusted by the Consumer Price Index (CPI) which measures the monthly average price development of goods and services purchased by German households. The CPI data was collected from the Federal Statistical Office of Germany (Destatis).\\
 \textcolor{red}{missing: price prediction}\\
@@ -165,13 +166,13 @@ The visitor numbers fluctuate over the years, and we observe a dramatic drop in 
 \textcolor{red}{add figure: visitor trends.}\\
 \subsection*{3.2 Influence of precipitation on visitor numbers}
 The PCC we computed for the mean daily visitors and the mean daily precipitation in each year is around -0.1913. The correlation is negative. As the amount of precipitation increases the amount of visitors decrease. Since the absolute value of the PCC is quite low but not zero the correlation between the variables is weak. Due to the fact that the precipitaion here includes hours of the day were the Oktoberfest isn't open we also investigated if the mean precipitation at day time correlates with the amount of visitors stronger. We therefor considered the precipitation between 10am and 10pm. The PCC than is around -0.2276. So it gets stronger but is still weak.
-\begin{figure*}% this figure made with
-  % plt.rcParams.update(bundles.icml2022(column=”half”, nrows=1, ncols=2, usetex=False)))
+\begin{figure}[]% this figure made with
+  % plt.rcParams.update(bundles.icml2022(column="half”,usetex=False))
   % fig,ax = plt.subplots(nrows=1, ncols=1)
   \includegraphics{fig/totalprecipitation.pdf}
   \caption{The mean daily visitors of the Oktoberfest as a function of the mean daily precipitation between 10am and 10pm at the time of the Oktoberfest in each year. The lines are the linear regression lines of the data points.}
   \label{figure_precipitation}
-\end{figure*}\\
+\end{figure}\\
 \noindent
 In Figure~\ref{figure_precipitation} we can see the weak negative correlation in the green regression line which has a negative gradient while the values at both axis increas. The regression line shows that the mean daily amount of visitors of the Oktoberfest decrease by around 25.000 people as the mean precipitation at day time increases from zero milimeters to seven.\\
 \subsection*{3.3 Tourists to Upper Bavaria during Oktoberfest}
