@@ -171,15 +171,22 @@ We investigate visitor, price and consumption trends over the years, and use the
 
 \section{Results}\label{sec:results}
 \subsection*{3.1 Visitor trend over the years}
-The visitor numbers fluctuate over the years, and we observe a dramatic drop in visitor numbers in the year 2001. The Oktoberfest was cancelled in 2020 and 2021 due to the pandemic. A new record number of visitors was set in 2023.\\
-\textcolor{red}{add figure: visitor trends.}\\
+As seen in figure~\ref{figure_visitors}, the visitor numbers fluctuate over the years, and we observe a dramatic drop in visitor numbers in the year 2001. The Oktoberfest was cancelled in 2020 and 2021 due to the pandemic. A new record number of visitors was set in 2023.
+\begin{figure}[ht]% this figure made with
+  % plt.rcParams.update(bundles.icml2022(column="half”,usetex=False))
+  % fig,ax = plt.subplots(nrows=1, ncols=1)
+  \includegraphics{data_lit/fig/totalvisitors.pdf}
+  \caption{The number of visitors to the Oktoberfest from 1985 to 2023. Bars are coloured depending on the duration of the festival that year.}
+  \label{figure_visitors}
+\end{figure}
+
 \subsection*{3.2 Influence of precipitation on visitor numbers}
 The PCC for the mean daily visitors and the mean daily precipitation in each year is around -0.1913. The correlation is thus negative. As the amount of precipitation increases the amount of visitors decrease. Since the absolute value of the PCC is low the correlation between the variables is weak. Due to the fact that the precipitation here includes hours of the day were the Oktoberfest isn't open we additionally investigate if the mean precipitation at day time correlates with the amount of visitors stronger. We therefor considered the precipitation between 10am and 10pm. The PCC than is around -0.2276. So the correlation gets stronger but is still weak.
 \begin{figure}[ht]% this figure made with
   % plt.rcParams.update(bundles.icml2022(column="half”,usetex=False))
   % fig,ax = plt.subplots(nrows=1, ncols=1)
   \includegraphics{fig/totalprecipitation.pdf}
-  \caption{The mean daily visitors of the Oktoberfest as a function of the mean daily precipitation between 10am and 10pm at the time of the Oktoberfest in each year. The green line is the linear regression line of the data points.}
+  \caption{The mean daily visitors to the Oktoberfest as a function of the mean daily precipitation between 10am and 10pm during the Oktoberfest in each year. The green line is the linear regression line of the data points.}
   \label{figure_precipitation}
 \end{figure}\\
 \noindent
