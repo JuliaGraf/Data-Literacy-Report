@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{subfigure}
 \usepackage{booktabs} % for professional tables
+\usepackage{animate}
 
 
 \usepackage{tikz}
@@ -134,13 +135,18 @@ Put your abstract here. Abstracts typically start with a sentence motivating why
 
 \section{Introduction}\label{sec:intro}
 
-The Oktoberfest, held annually in Munich, Germany, is one of the world's most renowned folk festivals, attracting millions annually. In this paper, we analyze nearly four decades of Oktoberfest data, spanning from 1985 to 2023, to uncover insights into its evolution and various influencing factors. Understanding the dynamics of this iconic event is not only of cultural significance but also holds economic and societal implications. \\
-This paper is structured as follows: \Cref{sec:methods} outlines our data sources and analytical methods. \Cref{sec:results} presents our findings, elucidating key trends and correlations observed within the Oktoberfest dataset, and \Cref{sec:conclusion} discusses the implications of our findings and offers insights into future festivals.\\
+Motivate the problem, situation or topic you decided to work on. Describe why it matters (is it of societal, economic, scientific value?). Outline the rest of the paper (use references, e.g.~to \Cref{sec:methods}: What kind of data you are working with, how you analyse it, and what kind of conclusion you reached. The point of the introduction is to make the reader want to read the rest of the paper.
 
 \section{Data and Methods}\label{sec:methods}
 The annual Oktoberfest data from 1985 to 2022 was retrieved from the Open Data Portal of the Statistical Office Munich. This dataset contains the yearly festival duration, visitor numbers, as well as consumption and prices for beer and roast chicken. Additional data for 2023 was retrieved from the State Capital Munich Portal. \\
-We examine the evolution of visitor numbers over the years and use four additional datasets to investigate how these are influenced by precipitation. Weather datasets were retrieved from the Open Data Server of the German Meteorological Service (DWD) and contain data from the weather stations ``München-Stadt" and ``München (Bavariaring)". Two of the datasets contain the daily precipitation in millimeters, with one spanning from 1954 to 2022, and the other from 2022 to 2024~\citep{3}~\citep{4}. The remaining two datasets contain the hourly precipitation in millimeters, in ranges from 1997 to 2022, and from 2022 to 2024~\citep{1}~\citep{2}. We use the pearson correlation coefficient (PCC) to investigate the correlation between the average number of daily visitors and the average daily precipitation during each Oktoberfest, and also constrain daily precipitation between 10am and 10pm. The PCC ranges from -1 to 1, where a higher absolute value indicates a stronger correlation between two variables~\cite{thonield}.\\
-\textcolor{red}{missing: heat map data}\\
+We examine the evolution of visitor numbers over the years and use four additional datasets to investigate how these are influenced by precipitation. Weather datasets were retrieved from the Open Data Server of the German Meteorological Service (DWD) and contain data from the weather stations ``München-Stadt" and ``München (Bavariaring)". Two of the datasets contain the daily precipitation in millimeters, with one spanning from 1954 to 2022, and the other from 2022 to 2024~\citep{3,4}. The remaining two datasets contain the hourly precipitation in millimeters, in ranges from 1997 to 2022, and from 2022 to 2024~\citep{1,2}. We use the Pearson correlation coefficient (PCC) to investigate the correlation between the average number of daily visitors and the average daily precipitation during each Oktoberfest, and also constrain daily precipitation between 10am and 10pm. The PCC ranges from -1 to 1, where a higher absolute value indicates a stronger correlation between two variables~\cite{thonield}.\\
+
+To investigate the impact of Oktoberfest on visitor numbers in the surrounding districts of Munich, we obtained monthly visitor numbers for February, March, April, August, September, and October from 2006 to 2023 for all districts in Bavaria from the GENESIS-Online database of the Bavarian State Office for Statistics~\citep{table_GENESIS}. The visitor numbers are categorized into overnight stays and arrivals and are listed for both domestic and foreign visitors.
+
+To generate a heat map of the areas that benefit the most from Oktoberfest in terms of increased visitor numbers, a methodology for calculating the number of visitors to a district who also attend the festival must be established. One possible approach is to calculate the average number of visitors for the preceding month (August) and the following month (October) to estimate the expected number of visitors without the influence of the Oktoberfest. The expected number can then be subtracted from the actual number of visitors to determine the number of visitors to the Oktoberfest. The final heat map displays the percentage deviation between the expected and actual number of visitors for the individual districts in Upper Bavaria. This correction accounts for the varying size and popularity of the districts.
+
+To demonstrate the validity of the method, we applied it to three consecutive months (February, March, and April), assuming similar visitor numbers as no special events took place during these months. If this assumption is correct, our method should accurately estimate the number of visitors in March by using the average number of visitors in February and April. Validation works with any three consecutive months, as long as they are not expected to have an unusually high or low number of visitors, such as during Christmas markets or similar events.\\
+
 We investigate visitor, price and consumption trends over the years, and use the PCC to explore the correlation between beer price and per capita beer consumption.To account for inflation over time, beer prices are also adjusted by the Consumer Price Index (CPI) which measures the monthly average price development of goods and services purchased by German households. The CPI data was collected from the Federal Statistical Office of Germany (Destatis).\\
 \textcolor{red}{missing: price prediction}\\
 
@@ -166,8 +172,8 @@ We investigate visitor, price and consumption trends over the years, and use the
 The visitor numbers fluctuate over the years, and we observe a dramatic drop in visitor numbers in the year 2001. The Oktoberfest was cancelled in 2020 and 2021 due to the pandemic. A new record number of visitors was set in 2023.\\
 \textcolor{red}{add figure: visitor trends.}\\
 \subsection*{3.2 Influence of precipitation on visitor numbers}
-The PCC we for the mean daily visitors and the mean daily precipitation in each year is around -0.1913. The correlation is thus negative. As the amount of precipitation increases the amount of visitors decrease. Since the absolute value of the PCC is low but not zero the variables correlate but the correlation is weak. Due to the fact that the daily precipitation includes hours of the day were the Oktoberfest isn't open we also investigated if the mean precipitation at day time correlates with the amount of visitors stronger. We therefor considered the precipitation between 10am and 10pm. The PCC than is around -0.2276. So the correlation gets stronger but is still weak.
-\begin{figure}[]% this figure made with
+The PCC we computed for the mean daily visitors and the mean daily precipitation in each year is around -0.1913. The correlation is negative. As the amount of precipitation increases the amount of visitors decrease. Since the absolute value of the PCC is quite low but not zero the correlation between the variables is weak. Due to the fact that the precipitaion here includes hours of the day were the Oktoberfest isn't open we also investigated if the mean precipitation at day time correlates with the amount of visitors stronger. We therefor considered the precipitation between 10am and 10pm. The PCC than is around -0.2276. So it gets stronger but is still weak.
+\begin{figure}[ht]% this figure made with
   % plt.rcParams.update(bundles.icml2022(column="half”,usetex=False))
   % fig,ax = plt.subplots(nrows=1, ncols=1)
   \includegraphics{fig/totalprecipitation.pdf}
@@ -175,8 +181,23 @@ The PCC we for the mean daily visitors and the mean daily precipitation in each 
   \label{figure_precipitation}
 \end{figure}\\
 \noindent
-In Figure~\ref{figure_precipitation} we can see the weak negative correlation represented by the green regression line which has a negative gradient while the values at both axis increase. The regression line shows that the mean daily amount of visitors of the Oktoberfest decrease by around 25.000 people as the mean precipitation at day time increases from zero millimeters to seven.\\
+In Figure~\ref{figure_precipitation} we can see the weak negative correlation in the green regression line which has a negative gradient while the values at both axis increas. The regression line shows that the mean daily amount of visitors of the Oktoberfest decrease by around 25.000 people as the mean precipitation at day time increases from zero milimeters to seven.\\
 \subsection*{3.3 Tourists to Upper Bavaria during Oktoberfest}
+\begin{figure*}[ht] % this figure made with
+% plt.rcParams.update(bundles.icml2022(column=”full”, nrows=1, ncols=2, usetex=False)))
+% fig,ax = plt.subplots(nrows=1, ncols=2)
+\includegraphics{fig/actual_vs_expected_arrivals.pdf} % note no [width=\textwidth] needed
+\caption{Expected and actual number of guest arrivals in the month of September in the districts of Munich and Ebersberg from 2006 to 2023.}
+\label{fig:exp_vs_actual_arrivals}
+\end{figure*}
+The Oktoberfest evidently boosts the number of visitors to Munich in September (Figure~\ref{fig:exp_vs_actual_arrivals}). In the nearby districts around Munich (such as Ebersberg), there are smaller but still noticeable deviations between the expected and actual number of guest arrivals. Importantly, the number of guest arrivals consistently surpasses expectations, indicating the impact of Oktoberfest in these areas. 
+\begin{figure}[ht]
+  \centering
+  \animategraphics[autoplay,loop,width=1.0\linewidth]{0.5}{fig/gif_images/visitors_heatmap_}{2006}{2022}
+  \caption{Percentage change between the expected and observed number of tourists for the individual counties of Upper Bavaria from 2006 to 2022. The areas in purple are those where the number of visitors has been higher than expected.}
+  \label{fig:heatmap}
+\end{figure}
+This information can be neatly presented using a heat map to show how the number of visitors in different counties around Munich is affected by the Oktoberfest (Figure~\ref{fig:heatmap}).
 \subsection*{3.4 Price and consumption trends}
 We see an almost linear increase in beer price over the years. The per capita consumption also shows an overall increase, but fluctuates over the years. We observe a low per capita beer consumption in 2023, likely due to to the record number of visitors that year. The correlation plot shows that beer consumption continues to increase, despite rising beer prices. This strong positive relationship between beer price and consumption is confimred by the PCC of .... \\
 Adjusting beer prices by the CPI slightly increases the correlation between price and consumption from ... (excluding 2023 outlier) to ....\\
@@ -186,11 +207,12 @@ For roast chicken, the PCC coeffiecient of ... shows a strong negative correlati
 \section{Discussion \& Conclusion}\label{sec:conclusion}
 The sudden drop in visitors in 2001 could potentially be explained by the 9/11 terrorist attacks that occurred a few weeks prior to the festival. Perhaps surprisingly, visitor numbers were still very low during the first festival after the pandemic in 2022. This could be due to the public's remaining fears of contracting the virus in large crowds.\\
 
-
-Since the PCC for the mean precipitation and the mean daily visitors is weak it looks like the precipitation doesn't influence the visitors of the Oktoberfest much.
 The PCC is weak for the mean precipitation at day time and the mean daily vistors. This can have many reasons. One reason is, that we looked at the correlation of the mean over all days for each Oktoberfest and not at the correlation between the precipitation at each day and the visitor number of each day due to the lack of data. If in one year there is a very rainy day at which fewer people visit followed by good days with no rain were all the vistors come instead we couldn't see that the people that visited were influenced by the precipitation when only using the mean. Due to that even a weak correaltion shows that the amount of precipitation influences the amount of vistors. ........ In conclusion we can say, that the amount of precipitation influences the amount of visitors, but there are factors that influence the amount of precipitatioin more.\\
 
-The rising beer prices do not have a negative effect on the beer consumption, as we observe a positive correlation between beer price and consumption per capita. The Oktoberfest has grown in popularity since 1985 and now also attracts many international tourists. This might explain why people are willing to spend more on a "Maß" beer, especially for some international tourists who might be used to paying the same prices in their home country. The 2023 Oktoberfest was the first to introduce free water fountains, which could have led to the decrease in overall beer consumption we see that year. Interestingly, the positive correlation in beer consumption and price is opposite to what we observed with the chicken data. However, the reason for the decrease in chicken consumption might have less to do with the increase in price, but rather with the rise in popularity of other foods.
+The rising beer prices do not have a negative effect on the beer consumption, as we observe a positive correlation between beer price and consumption per capita. The Oktoberfest has grown in popularity since 1985 and now also attracts many international tourists. This might explain why people are willing to spend more on a "Maß" beer, especially for some international tourists who might be used to paying the same prices in their home country. The 2023 Oktoberfest was the first to introduce free water fountains, which could have led to the decrease in overall beer consumption we see that year. Interestingly, the positive correlation in beer consumption and price is opposite to what we observed with the chicken data. However, the reason for the decrease in chicken consumption might have less to do with the increase in price, but rather with the rise in popularity of other foods.\\
+
+\textcolor{red}{discussion Heatmap!}
+As daily visitor numbers are unavailable, the monthly breakdown provides the most detailed information available. For our analysis, we assume that the majority of visitors to the Oktoberfest are included in the visitor numbers for September, especially the arrival figures, as the Oktoberfest starts in mid-September and most visitors are likely to arrive during this month.
 
 \section*{Contribution Statement}
 
