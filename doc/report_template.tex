@@ -139,7 +139,7 @@ The Oktoberfest, held in Munich, Germany, is one of the world's most renowned fo
 Our discoveries shed light on the dynamics of Oktoberfest and its wider implications, providing valuable information that could be useful in the future planning of this festival.
 
 \section{Data and Methods}\label{sec:methods}
-The annual Oktoberfest data from 1985 to 2022 was retrieved from the Open Data Portal of the Statistical Office Munich. This dataset contains the yearly festival duration, visitor numbers, as well as consumption and prices for beer and roast chicken. Additional data for 2023 was retrieved from the State Capital Munich Portal. \\
+The annual Oktoberfest data from 1985 to 2022 was retrieved from the Open Data Portal of the Statistical Office Munich~\citep{5}. This dataset contains the yearly festival duration, visitor numbers, as well as consumption and prices for beer and roast chicken. Additional data for 2023 was retrieved from the State Capital Munich Portal~\citep{6,7}. \\
 We examine the evolution of visitor numbers over the years and use four additional datasets to investigate how these are influenced by precipitation. Weather datasets were retrieved from the Open Data Server of the German Meteorological Service (DWD) and contain data from the weather stations ``München-Stadt" and ``München (Bavariaring)". Two of the datasets contain the daily precipitation in millimeters, with one spanning from 1954 to 2022, and the other from 2022 to 2024~\citep{3,4}. The remaining two datasets contain the hourly precipitation in millimeters, in ranges from 1997 to 2022, and from 2022 to 2024~\citep{1,2}. We use the Pearson correlation coefficient (PCC) to investigate the correlation between the average number of daily visitors and the average daily precipitation during each Oktoberfest, and also constrain daily precipitation between 10am and 10pm. The PCC ranges from -1 to 1, where a high absolute value indicates a strong correlation between two variables~\cite{thonield}.\\
 To investigate the impact of Oktoberfest on visitor numbers in the surrounding districts of Munich, we obtained monthly visitor numbers for February, March, April, August, September, and October from 2006 to 2023 for all districts in Bavaria from the GENESIS-Online database of the Bavarian State Office for Statistics~\citep{table_GENESIS}. The visitor numbers are categorized into overnight stays and arrivals and are listed for both domestic and foreign visitors.\\
 To generate a heat map of the areas that benefit the most from Oktoberfest in terms of increased visitor numbers, a methodology for calculating the number of visitors to a district who also attend the festival must be established. One possible approach is to calculate the average number of visitors for the preceding month (August) and the following month (October) to estimate the expected number of visitors without the influence of the Oktoberfest. The expected number can then be subtracted from the actual number of visitors to determine the number of visitors to the Oktoberfest. The final heat map displays the percentage deviation between the expected and actual number of visitors for the individual districts in Upper Bavaria. This correction accounts for the varying size and popularity of the districts.\\
@@ -183,9 +183,8 @@ The PCC for the mean daily visitors and the mean daily precipitation in each yea
   \includegraphics{fig/totalprecipitation.pdf}
   \caption{The mean daily visitors to the Oktoberfest as a function of the mean daily precipitation between 10am and 10pm during the Oktoberfest in each year. The green line is the linear regression line of the data points.}
   \label{figure_precipitation}
-\end{figure}\\
-\noindent
-The green regression line in figure~\ref{figure_precipitation} has a negative gradient while the values at both axis increase. The data points around the regression line are widely spread. Those two features of the plot visualise the weak negative PCC of the data points.\\
+\end{figure}
+The green regression line in figure~\ref{figure_precipitation} has a negative gradient while the values at both axis increase. The data points around the regression line are widely spread. Those two features of the plot visualise the weak negative PCC of the data points.
 
 \subsection*{3.3 Tourists to Upper Bavaria during Oktoberfest}
 \begin{figure*}[ht] % this figure made with
@@ -202,11 +201,17 @@ The Oktoberfest evidently boosts the number of visitors to Munich in September (
   \caption{Percentage change between the expected and observed number of tourists for the individual counties of Upper Bavaria from 2006 to 2022. The areas in purple are those where the number of visitors has been higher than expected.}
   \label{fig:heatmap}
 \end{figure}
-This information can be neatly presented using a heat map to show how the number of visitors in different counties around Munich is affected by the Oktoberfest (Figure~\ref{fig:heatmap}).
+This information can be neatly presented using a heat map to show how the number of visitors in different counties around Munich is affected by the Oktoberfest (Figure~\ref{fig:heatmap}).\textbf{}
 \subsection*{3.4 Price and consumption trends}
-We see an almost linear increase in beer price over the years. The per capita consumption also shows an overall increase, but fluctuates over the years. We observe a low per capita beer consumption in 2023, likely due to to the record number of visitors that year. The correlation plot shows that beer consumption continues to increase, despite rising beer prices. This strong positive relationship between beer price and consumption is confimred by the PCC of .... \\
-Adjusting beer prices by the CPI slightly increases the correlation between price and consumption from ... (excluding 2023 outlier) to ....\\
-For roast chicken, the PCC coeffiecient of ... shows a strong negative correlation between price and consumption.
+We see an almost linear increase in beer price over the years (Figure~\ref{fig:beer_consumption}). The per capita consumption also shows an overall increase, but fluctuates over the years. We observe a low per capita beer consumption in 2023, likely due to to the record number of visitors that year. The correlation plot shows that beer consumption continues to increase, despite rising beer prices. This strong positive relationship between beer price and consumption is confirmed by the PCC of 0.8452.
+Adjusting beer prices by the CPI (and excluding 2023 outlier) slightly increases the correlation between price and consumption from 0.9473  to 0.9548. For roast chicken, the PCC coeffiecient of -0.8679 shows a strong negative correlation between price and consumption.
+\begin{figure*}[ht] % this figure made with
+% plt.rcParams.update(bundles.icml2022(column=”full”, nrows=1, ncols=2, usetex=False)))
+% fig,ax = plt.subplots(2)
+\includegraphics{doc/fig/beer_consumption.pdf} % note no [width=\textwidth] needed
+\caption{\textcolor{red}{insert caption}}
+\label{fig:beer_consumption}
+\end{figure*}
 \subsection*{3.5 Beer \& chicken price prediction}
 The linear regression model utilized for beer price prediction exhibited impressive performance, yielding a forecasted value of 14.29€, closely mirroring the actual observed price of 14.33€. The Gaussian Process Regression estimated the price to be 13.13€, accompanied by an uncertainty range of approximately ± 2.52.
 Shifting the focus to chicken prices, the linear regression model projected a value of 13.82€, deviating from the empirical value of 16.49€. On the other hand, the Gaussian Process Regression provided a mean projected price of 13.08€, accompanied by an uncertainty range of approximately ± 1.96.
@@ -224,10 +229,6 @@ As daily visitor numbers are unavailable, the monthly breakdown provides the mos
 \section*{Contribution Statement}
 
 Explain here, in one sentence per person, what each group member contributed. For example, you could write: Max Mustermann collected and prepared data. Gabi Musterfrau and John Doe performed the data analysis. Jane Doe produced visualizations. All authors will jointly wrote the text of the report. Note that you, as a group, a collectively responsible for the report. Your contributions should be roughly equal in amount and difficulty.
-
-\section*{Notes} 
-
-Your entire report has a \textbf{hard page limit of 4 pages} excluding references. (I.e. any pages beyond page 4 must only contain references). Appendices are \emph{not} possible. But you can put additional material, like interactive visualizations or videos, on a githunb repo (use \href{https://github.com/pnkraemer/tueplots}{links} in your pdf to refer to them). Each report has to contain \textbf{at least three plots or visualizations}, and \textbf{cite at least two references}. More details about how to prepare the report, inclucing how to produce plots, cite correctly, and how to ideally structure your github repo, will be discussed in the lecture, where a rubric for the evaluation will also be provided.
 
 
 \bibliography{bibliography}
