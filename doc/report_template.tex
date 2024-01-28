@@ -49,7 +49,7 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{amsthm}
- 
+
 % if you use cleveref..
 \usepackage[capitalize,noabbrev]{cleveref}
 
@@ -149,7 +149,7 @@ We utilized a Linear regression model to predict the price for the year 2023, an
 
 % This is the template for a figure from the original ICML submission pack. In lecture 10 we will discuss plotting in detail.
 % Refer to this lecture on how to include figures in this text.
-% 
+%
 % \begin{figure}[ht]
 % \vskip 0.2in
 % \begin{center}
@@ -193,11 +193,11 @@ The PCC for the mean daily visitors and the mean daily precipitation each year i
 \caption{Expected and actual number of guest arrivals in the month of September in the districts of Munich and Ebersberg from 2006 to 2023.}
 \label{fig:exp_vs_actual_arrivals}
 \end{figure*}
-The Oktoberfest evidently boosts the number of visitors to Munich when it takes place in September (Figure~\ref{fig:exp_vs_actual_arrivals}). In the nearby districts around Munich (such as Ebersberg), there are smaller but still noticeable deviations between the expected and actual number of guest arrivals. Importantly, the number of guest arrivals consistently surpasses expectations, indicating the impact of Oktoberfest in these areas. 
+The Oktoberfest evidently boosts the number of visitors to Munich when it takes place in September (Figure~\ref{fig:exp_vs_actual_arrivals}). In the nearby districts around Munich (such as Ebersberg), there are smaller but still noticeable deviations between the expected and actual number of guest arrivals. Importantly, the number of guest arrivals consistently surpasses expectations, indicating the impact of Oktoberfest in these areas.
 \begin{figure}[ht]
   \centering
   \animategraphics[autoplay,loop,width=1.0\linewidth]{0.5}{fig/gif_images/visitors_heatmap_}{2006}{2022}
-  \caption{Percentage change between the expected and observed number of tourists for the individual counties of Upper Bavaria from 2006 to 2022. The areas in darker purple are those where the number of visitors has been higher than expected.}
+  \caption{Percentage change between the expected and observed number of tourists in September for the individual counties of Upper Bavaria from 2006 to 2022. The areas in darker purple are those where the number of visitors has been higher than expected.}
   \label{fig:heatmap}
 \end{figure}
 This information can be neatly presented using a heat map to show how the number of visitors in different counties around Munich is affected by the Oktoberfest (Figure~\ref{fig:heatmap}).\textbf{}
@@ -220,10 +220,10 @@ Shifting the focus to chicken prices, the linear regression model projected a va
 The sudden drop in visitors in 2001 could potentially be explained by the 9/11 terrorist attacks that occurred a few weeks prior which almost resulted in the cancellation of the festival~\citep{9}. Perhaps surprisingly, visitor numbers were still very low during the first festival after the pandemic in 2022. This could be due to the public's remaining fears of contracting the virus in large crowds.\\
 The weak correlation between mean precipitation at daytime and mean daily visitors indicates that precipitation does not have a great influence on festival attendance. This outcome is contrary to our expectations and can be attributed to various factors. One reason is the lack of daily visitor numbers, forcing us to rely on the mean over all days. However, examining the correlation of these means overlooks the variations in daily distributions, potentially leading to a weaker correlation. Nevertheless, this method still demonstrates that precipitation has only a minor effect on visitor numbers, with other factors, such as terrorist attacks, likely having a greater impact on festival attendance.\\
 Rising beer prices do not deter beer consumption, as there is a positive correlation between beer price and per capita consumption. The Oktoberfest has grown in popularity since 1985 and now also attracts many international tourists. This could explain why people are willing to pay more for a "Maß" beer, particularly international tourists accustomed to similar prices in their home countries. Adjusting beer prices for inflation using the CPI further confirms the correlation's independence from inflation rates, as it isolates changes in real beer prices from general price increases in the economy. The 2023 Oktoberfest was the first to introduce free water fountains~\citep{8}, which could have contributed to the decrease in overall beer consumption we see that year. Interestingly, while beer consumption shows a positive correlation with price, chicken consumption trends in the opposite direction. However, the decrease in chicken consumption might have less to do with the increase in price, but rather with the rise in popularity of other foods.\\
-The notable accuracy of the linear regression model, in contrast to the Gaussian process regression in predicting beer prices, may be attributed to the predominantly linear relationship of the beer prices. Consequently, for simplicity and computational efficiency, opting for the linear regression model would be a pragmatic choice for predicting beer prices. 
+The notable accuracy of the linear regression model, in contrast to the Gaussian process regression in predicting beer prices, may be attributed to the predominantly linear relationship of the beer prices. Consequently, for simplicity and computational efficiency, opting for the linear regression model would be a pragmatic choice for predicting beer prices.
 On the other hand, both models perform poorly when predicting chicken prices. This could be attributed to the unusual increase in chicken prices around the year 2000, posing challenges for the models in capturing and adapting to such irregularities in the data.\\
-\textcolor{red}{discussion Heatmap!}
-As daily visitor numbers are unavailable, the monthly breakdown provides the most detailed information available. For our analysis, we assume that the majority of visitors to the Oktoberfest are included in the visitor numbers for September, especially the arrival figures, as the Oktoberfest starts in mid-September and most visitors are likely to arrive during this month.
+
+As daily visitor numbers are unavailable, the monthly breakdown provides the most detailed information available. For our analysis, we assume that the majority of visitors to the Oktoberfest are included in the visitor numbers for September, especially the arrival figures, as the Oktoberfest starts in mid-September and most visitors are likely to arrive during this month. The fact that the Oktoberfest has an impact on visitor numbers beyond the city itself is indicated by the overall purple shading of the areas surrounding Munich. As Munich is already a popular tourist destination, smaller districts surrounding Munich benefit even more from the Oktoberfest, experiencing a higher percentage increase in visitor numbers. Interestingly, one district (Traunstein) is colored orange in many years, which means that there are fewer tourists than expected. There may be an event in Traunstein in August or October that drives up visitor numbers in that month.
 
 \section*{Contribution Statement}
 Jana Hoffmann analyzed the influence of precipitation on visitor numbers, Julia Graf investigated the influx of tourists to the surrounding area, Jessie Midgley looked at the correlation between consumption and prices, and Tithi Rakshit employed models to predict future prices. All authors contributed to the writing of the report.
