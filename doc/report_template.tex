@@ -193,17 +193,15 @@ The PCC for the mean daily visitors and the mean daily precipitation each year i
 \caption{Expected and actual number of guest arrivals in the month of September in the districts of Munich and Ebersberg from 2006 to 2023.}
 \label{fig:exp_vs_actual_arrivals}
 \end{figure}
-The Oktoberfest evidently boosts the number of visitors to Munich when it takes place in September (Figure~\ref{fig:exp_vs_actual_arrivals}). In the nearby districts around Munich (such as Ebersberg), there are smaller but still noticeable deviations between the expected and actual number of guest arrivals. Importantly, the number of guest arrivals consistently surpasses expectations, indicating the impact of Oktoberfest in these areas.
+The number of visitors to Munich in September is boosted by the Oktoberfest (Figure~\ref{fig:exp_vs_actual_arrivals}). In the nearby districts around Munich (such as Ebersberg), there are smaller but still noticeable deviations between the expected and actual number of guest arrivals. Importantly, the number of guest arrivals consistently surpasses expectations, indicating the impact of Oktoberfest in these areas.
 \begin{figure}[ht]
   \centering
   \animategraphics[autoplay,loop,width=1.0\linewidth]{0.5}{fig/gif_images/visitors_heatmap_}{2006}{2022}
-  \caption{Percentage change between the expected and observed number of tourists in September for the individual counties of Upper Bavaria from 2006 to 2022. The areas in darker purple are those where the number of visitors has been higher than expected.}
+  \caption{Percentage change between the expected and observed number of tourists in September for the individual counties of Upper Bavaria from 2006 to 2022. The areas in darker purple are those where the number of visitors has been higher than expected. If the GIF is not displayed correctly, please visit \href{https://github.com/JuliaGraf/Data-Literacy-Report/blob/b13d5f18d5c95ca0100450f6b692807ec280bffd/doc/fig/GifMap.gif}{GitHub}.}
   \label{fig:heatmap}
 \end{figure}
 This information can be neatly presented using a heat map to show how the number of visitors in different counties around Munich is affected by the Oktoberfest (Figure~\ref{fig:heatmap}).\textbf{}
 
-\subsection*{3.4 Price and consumption trends}
-We see an almost linear increase in beer price over the years (Figure~\ref{fig:beer_consumption}). The per capita consumption also shows an overall increase, but fluctuates over the years. We observe a low per capita beer consumption in 2023, likely due to to the record number of visitors that year. The correlation plot shows that beer consumption continues to increase, despite rising beer prices. This strong positive relationship between beer price and consumption is confirmed by the PCC of 0.8452. Adjusting beer prices by the CPI (and excluding 2023 outlier) slightly increases the correlation between beer price and consumption from 0.9473 to 0.9548. For roast chicken, a PCC coefficient of -0.8679 shows a strong negative correlation between price and consumption.
 \begin{figure*}[ht] % this figure made with
 % plt.rcParams.update(bundles.icml2022(column=”full”, nrows=1, ncols=2, usetex=False)))
 % fig,ax = plt.subplots(2)
@@ -211,13 +209,15 @@ We see an almost linear increase in beer price over the years (Figure~\ref{fig:b
 \caption{\textit{Top:} Beer price and beer consumption per capita between 1985 and 2023. \textit{Bottom:} Correlation between beer price and beer consumption per capita.}
 \label{fig:beer_consumption}
 \end{figure*}
+\subsection*{3.4 Price and consumption trends}
+We see an almost linear increase in beer price over the years (Figure~\ref{fig:beer_consumption}). The per capita consumption also shows an overall increase, but fluctuates over the years. We observe a low per capita beer consumption in 2023, likely due to to the record number of visitors that year. The correlation plot shows that beer consumption continues to increase, despite rising beer prices. This strong positive relationship between beer price and consumption is confirmed by the PCC of 0.8452. Adjusting beer prices by the CPI (and excluding 2023 outlier) slightly increases the correlation between beer price and consumption from 0.9473 to 0.9548. For roast chicken, a PCC coefficient of -0.8679 shows a strong negative correlation between price and consumption.
 
 \subsection*{3.5 Beer \& chicken price prediction}
 The linear regression model utilized for beer price prediction exhibited impressive performance, forecasting a value of 14.29€ in 2023, which closely mirrors the observed price of 14.33€. The Gaussian Process Regression estimated the price to be 13.13€, accompanied by an uncertainty range of approximately ± 2.52.
 Shifting the focus to chicken prices, the linear regression model projected a value of 13.82€ in 2023, deviating from the observed value of 16.49€. On the other hand, the Gaussian Process Regression provided a mean projected price of 13.08€, accompanied by an uncertainty range of approximately ± 1.96.
 \begin{figure}[ht]
     % this figure made with plt.rcParams.update(bundles.icml2022(column="half”,usetex=False)) fig,ax = plt.subplots(nrows=1, ncols=1)
-    \includegraphics{fig/gaussian_beer_price_pred.pdf} 
+    \includegraphics{fig/gaussian_beer_price_pred.pdf}
     \caption{Beer Price Prediction from 1985 till 2023 using Gaussian process regression with an uncertainty level of one standard deviation for 2023.  }
     \label{figure_prediction}
 \end{figure}
