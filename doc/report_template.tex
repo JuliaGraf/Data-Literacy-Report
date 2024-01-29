@@ -185,6 +185,8 @@ The PCC for the mean daily visitors and the mean daily precipitation each year i
 \end{figure}
 
 \subsection*{3.3 Tourists to Upper Bavaria during Oktoberfest}
+The number of visitors to Munich in September is boosted by the Oktoberfest (Figure~\ref{fig:exp_vs_actual_arrivals}). In the nearby districts around Munich (such as Ebersberg), there are smaller but still noticeable deviations between the expected and actual number of guest arrivals. Importantly, the number of guest arrivals consistently surpasses expectations, indicating the impact of Oktoberfest in these areas.\\
+This information can be neatly presented using a heat map to show how the number of visitors in different counties around Munich is affected by the Oktoberfest (Figure~\ref{fig:heatmap}). \href{https://github.com/JuliaGraf/Data-Literacy-Report/blob/29b5d6d1b380344bcc617fa75a9feec995fd2069/doc/fig/validation_zoom.pdf}{Our validation} shows that in almost all cases the March predictions from our method are very close to the actual number of visitors, demonstrating the reliability of our heatmap.
 \begin{figure}[ht] % this figure made with
 % plt.rcParams.update(bundles.icml2022(column=”half”, nrows=1, ncols=1, usetex=False)))
 % fig,ax = plt.subplots(nrows=1, ncols=1)
@@ -192,14 +194,12 @@ The PCC for the mean daily visitors and the mean daily precipitation each year i
 \caption{Expected and actual number of guest arrivals in the month of September in the districts of Munich and Ebersberg from 2006 to 2023.}
 \label{fig:exp_vs_actual_arrivals}
 \end{figure}
-The number of visitors to Munich in September is boosted by the Oktoberfest (Figure~\ref{fig:exp_vs_actual_arrivals}). In the nearby districts around Munich (such as Ebersberg), there are smaller but still noticeable deviations between the expected and actual number of guest arrivals. Importantly, the number of guest arrivals consistently surpasses expectations, indicating the impact of Oktoberfest in these areas.
 \begin{figure}[ht]
   \centering
   \animategraphics[autoplay,loop,width=1.0\linewidth]{0.5}{fig/gif_images/visitors_heatmap_}{2006}{2022}
   \caption{Percentage change between the expected and observed number of tourists in September for the individual counties of Upper Bavaria from 2006 to 2022. The areas in darker purple are those where the number of visitors has been higher than expected. If the GIF is not displayed correctly, please visit \href{https://github.com/JuliaGraf/Data-Literacy-Report/blob/b13d5f18d5c95ca0100450f6b692807ec280bffd/doc/fig/GifMap.gif}{GitHub}.}
   \label{fig:heatmap}
 \end{figure}
-This information can be neatly presented using a heat map to show how the number of visitors in different counties around Munich is affected by the Oktoberfest (Figure~\ref{fig:heatmap}). \href{https://github.com/JuliaGraf/Data-Literacy-Report/blob/29b5d6d1b380344bcc617fa75a9feec995fd2069/doc/fig/validation_zoom.pdf}{Our validation} shows that in almost all cases the March predictions from our method are very close to the actual number of visitors, demonstrating the reliability of our heatmap.
 
 \begin{figure*}[ht] % this figure made with
 % plt.rcParams.update(bundles.icml2022(column=”full”, nrows=1, ncols=2, usetex=False)))
