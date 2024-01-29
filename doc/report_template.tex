@@ -215,6 +215,19 @@ We see an almost linear increase in beer price over the years (Figure~\ref{fig:b
 \subsection*{3.5 Beer \& chicken price prediction}
 The linear regression model utilized for beer price prediction exhibited impressive performance, forecasting a value of 14.29€ in 2023, which closely mirrors the observed price of 14.33€. The Gaussian Process Regression estimated the price to be 13.13€, accompanied by an uncertainty range of approximately ± 2.52.
 Shifting the focus to chicken prices, the linear regression model projected a value of 13.82€ in 2023, deviating from the observed value of 16.49€. On the other hand, the Gaussian Process Regression provided a mean projected price of 13.08€, accompanied by an uncertainty range of approximately ± 1.96.
+\begin{figure}[ht]
+    % this figure made with plt.rcParams.update(bundles.icml2022(column="half”,usetex=False)) fig,ax = plt.subplots(nrows=1, ncols=1)
+    \includegraphics{fig/gaussian_beer_price_pred.pdf} 
+    \caption{Beer price predictions from 1985 till 2023 using Gaussian process regression.}
+    \label{figure_prediction}
+\end{figure}
+
+\begin{figure}[ht]
+    % this figure made with plt.rcParams.update(bundles.icml2022(column="half”,usetex=False)) fig,ax = plt.subplots(nrows=1, ncols=1)
+    \includegraphics{fig/gaussian_beer_price_CI.pdf} 
+    \caption{Beer price prediction for the year 2023 using Gaussian process regression with an uncertainty level of one standard deviation.}
+    \label{figure_prediction}
+\end{figure}
 
 \section{Discussion \& Conclusion}\label{sec:conclusion}
 The sudden drop in visitors in 2001 could potentially be explained by the 9/11 terrorist attacks that occurred a few weeks prior which almost resulted in the cancellation of the festival~\citep{9}. Perhaps surprisingly, visitor numbers were still very low during the first festival after the pandemic in 2022. This could be due to the public's remaining fears of contracting the virus in large crowds.\\
